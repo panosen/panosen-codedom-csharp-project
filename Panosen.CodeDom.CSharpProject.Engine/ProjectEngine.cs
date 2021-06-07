@@ -56,10 +56,6 @@ namespace Panosen.CodeDom.CSharpProject.Engine
                 }
             }
 
-            if (project.GeneratePackageOnBuild != null)
-            {
-                propertyGroup.AddChild("GeneratePackageOnBuild").SetContent(project.GeneratePackageOnBuild.ToString().ToLower());
-            }
             if (!string.IsNullOrEmpty(project.AssemblyName))
             {
                 propertyGroup.AddChild(new XmlNode { Name = "AssemblyName", Content = project.AssemblyName });
@@ -79,6 +75,10 @@ namespace Panosen.CodeDom.CSharpProject.Engine
             if (!string.IsNullOrEmpty(project.Company))
             {
                 propertyGroup.AddChild(new XmlNode { Name = "Company", Content = project.Company });
+            }
+            if (project.GeneratePackageOnBuild != null)
+            {
+                propertyGroup.AddChild("GeneratePackageOnBuild").SetContent(project.GeneratePackageOnBuild.ToString().ToLower());
             }
             if (project.WithDocumentationFile)
             {
