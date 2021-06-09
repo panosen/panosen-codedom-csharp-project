@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace Panosen.CodeDom.CSharpProject.Engine
 {
+    /// <summary>
+    /// SolutionEngine
+    /// </summary>
     public class SolutionEngine
     {
-
+        /// <summary>
+        /// Generate
+        /// </summary>
+        /// <param name="solution"></param>
+        /// <param name="codeWriter"></param>
         public void Generate(Solution solution, CodeWriter codeWriter)
         {
             codeWriter.WriteLine();

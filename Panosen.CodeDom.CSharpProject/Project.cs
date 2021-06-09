@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Panosen.CodeDom.CSharpProject
 {
+    /// <summary>
+    /// Project
+    /// </summary>
     public class Project
     {
         /// <summary>
@@ -15,10 +18,19 @@ namespace Panosen.CodeDom.CSharpProject
         /// </summary>
         public string ProjectName { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string ProjectPath { get; set; }
 
+        /// <summary>
+        /// ProjectGuid
+        /// </summary>
         public string ProjectGuid { get; set; }
 
+        /// <summary>
+        /// ProjectTypeGuid
+        /// </summary>
         public string ProjectTypeGuid { get; set; }
 
         /// <summary>
@@ -76,6 +88,9 @@ namespace Panosen.CodeDom.CSharpProject
         /// </summary>
         public string DistFilesPath { get; set; }
 
+        /// <summary>
+        /// GeneratePackageOnBuild
+        /// </summary>
         public bool? GeneratePackageOnBuild { get; set; }
     }
 }

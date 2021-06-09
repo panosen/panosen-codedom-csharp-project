@@ -27,7 +27,7 @@ namespace Panosen.CodeDom.CSharpProject.Engine.MSTest
 
             var builder = new StringBuilder();
 
-            new SolutionEngine().Generate(solution, new StringWriter(builder));
+            new SolutionEngine().Generate(solution, builder);
 
             var actual = builder.ToString();
 

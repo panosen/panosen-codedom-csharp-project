@@ -20,11 +20,11 @@ namespace Panosen.CodeDom.CSharpProject.Engine.MSTest
 
             ProjectEngine engine = new ProjectEngine();
 
-            var stringBuilder = new StringBuilder();
+            var builder = new StringBuilder();
 
-            engine.Generate(project, new StringWriter(stringBuilder));
+            engine.Generate(project, builder);
 
-            var actual = stringBuilder.ToString();
+            var actual = builder.ToString();
 
             var expected = PrepareExpected();
 

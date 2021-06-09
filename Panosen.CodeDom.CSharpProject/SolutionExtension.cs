@@ -6,8 +6,20 @@ using System.Threading.Tasks;
 
 namespace Panosen.CodeDom.CSharpProject
 {
+    /// <summary>
+    /// SolutionExtension
+    /// </summary>
     public static class SolutionExtension
     {
+        /// <summary>
+        /// AddProject
+        /// </summary>
+        /// <param name="solution"></param>
+        /// <param name="projectName"></param>
+        /// <param name="projectGuid"></param>
+        /// <param name="projectPath"></param>
+        /// <param name="projectTypeGuid"></param>
+        /// <returns></returns>
         public static Project AddProject(this Solution solution, string projectName = null, string projectGuid = null, string projectPath = null, string projectTypeGuid = null)
         {
             if (solution.ProjectList == null)

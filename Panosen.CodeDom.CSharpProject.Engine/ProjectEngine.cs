@@ -9,8 +9,16 @@ using System.Threading.Tasks;
 
 namespace Panosen.CodeDom.CSharpProject.Engine
 {
+    /// <summary>
+    /// ProjectEngine
+    /// </summary>
     public class ProjectEngine
     {
+        /// <summary>
+        /// Generate
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="codeWriter"></param>
         public void Generate(Project project, CodeWriter codeWriter)
         {
             var codeFile = BuildXmlNode(project);

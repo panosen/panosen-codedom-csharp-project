@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Panosen.CodeDom.CSharpProject
 {
+    /// <summary>
+    /// ProjectTypeGuids
+    /// </summary>
     public static class ProjectTypeGuids
     {
         /// <summary>
