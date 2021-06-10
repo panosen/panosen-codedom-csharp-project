@@ -111,7 +111,14 @@ namespace Panosen.CodeDom.CSharpProject.Engine
 
         private void BuildReferenceNode(XmlNode itemGroup, string nodeName, Dictionary<string, string> packageReferenceMap)
         {
-            foreach (var packageReference in packageReferenceMap ?? new Dictionary<string, string>())
+            if (packageReferenceMap == null || packageReferenceMap.Count == 0)
+            {
+                return;
+            }
+
+            var sortedPackageReferenceMap = new SortedDictionary<string, string>(packageReferenceMap);
+
+            foreach (var packageReference in sortedPackageReferenceMap)
             {
                 var packageReferenceItem = new XmlNode { Name = nodeName };
                 packageReferenceItem.AddAttribute("Include", packageReference.Key);
