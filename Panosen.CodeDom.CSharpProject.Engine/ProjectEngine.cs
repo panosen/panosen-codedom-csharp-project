@@ -23,7 +23,10 @@ namespace Panosen.CodeDom.CSharpProject.Engine
         {
             var codeFile = BuildXmlNode(project);
 
-            new XmlCodeEngine().Generate(codeFile, codeWriter, new GenerateOptions());
+            new XmlCodeEngine().Generate(codeFile, codeWriter, new GenerateOptions
+            {
+                TabString = "  "
+            });
         }
 
         private XmlNode BuildXmlNode(Project project)
