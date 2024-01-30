@@ -12,12 +12,23 @@ namespace Panosen.CodeDom.CSharpProject
     public static class ProjectExtension
     {
         /// <summary>
+        /// add FrameworkReference
+        /// </summary>
+        public static Project AddFrameworkReference(this Project template, string frameworkName)
+        {
+            if (template.FrameworkReferenceList == null)
+            {
+                template.FrameworkReferenceList = new List<string>();
+            }
+
+            template.FrameworkReferenceList.Add(frameworkName);
+
+            return template;
+        }
+
+        /// <summary>
         /// add PackageReference
         /// </summary>
-        /// <param name="template"></param>
-        /// <param name="packageName"></param>
-        /// <param name="version"></param>
-        /// <returns></returns>
         public static Project AddPackageReference(this Project template, string packageName, string version)
         {
             if (template.PackageReferenceMap == null)
@@ -58,8 +69,6 @@ namespace Panosen.CodeDom.CSharpProject
         /// <summary>
         /// add TargetFramework
         /// </summary>
-        /// <param name="template"></param>
-        /// <param name="targeFramework"></param>
         public static Project AddTargetFramework(this Project template, string targeFramework)
         {
             if (template.TargetFrameworkList == null)

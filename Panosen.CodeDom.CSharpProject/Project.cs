@@ -39,14 +39,14 @@ namespace Panosen.CodeDom.CSharpProject
         public List<string> TargetFrameworkList { get; set; }
 
         /// <summary>
+        /// 框架引用
+        /// </summary>
+        public List<string> FrameworkReferenceList { get; set; }
+
+        /// <summary>
         /// 包引用
         /// </summary>
         public Dictionary<string, string> PackageReferenceMap { get; set; }
-
-        /// <summary>
-        /// 框架引用
-        /// </summary>
-        public Dictionary<string, string> FrameworkReferenceMap { get; set; }
 
         /// <summary>
         /// 项目引用

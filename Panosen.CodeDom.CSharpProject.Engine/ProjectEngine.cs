@@ -40,7 +40,9 @@ namespace Panosen.CodeDom.CSharpProject.Engine
 
             BuildPropertyGroup(root, project);
 
-            BuildItemGroup(root, project);
+            BuildFrameworkReference(root, project);
+
+            BuildPackageReference(root, project);
 
             BuildProjectReference(root, project);
 
@@ -97,10 +99,9 @@ namespace Panosen.CodeDom.CSharpProject.Engine
             }
         }
 
-        private void BuildItemGroup(XmlNode root, Project project)
+        private void BuildFrameworkReference(XmlNode root, Project project)
         {
-            if ((project.FrameworkReferenceMap == null || project.FrameworkReferenceMap.Count == 0) &&
-                (project.PackageReferenceMap == null || project.PackageReferenceMap.Count == 0))
+            if (project.FrameworkReferenceList == null || project.FrameworkReferenceList.Count == 0)
             {
                 return;
             }
@@ -108,22 +109,30 @@ namespace Panosen.CodeDom.CSharpProject.Engine
             var itemGroup = new XmlNode { Name = "ItemGroup", NewLineBeforeNode = true };
             root.AddChild(itemGroup);
 
-            BuildReferenceNode(itemGroup, "FrameworkReference", project.FrameworkReferenceMap);
-            BuildReferenceNode(itemGroup, "PackageReference", project.PackageReferenceMap);
+            foreach (var frameworkReference in project.FrameworkReferenceList)
+            {
+                var packageReferenceItem = new XmlNode { Name = "FrameworkReference" };
+                packageReferenceItem.AddAttribute("Include", frameworkReference);
+
+                itemGroup.AddChild(packageReferenceItem);
+            }
         }
 
-        private void BuildReferenceNode(XmlNode itemGroup, string nodeName, Dictionary<string, string> packageReferenceMap)
+        private void BuildPackageReference(XmlNode root, Project project)
         {
-            if (packageReferenceMap == null || packageReferenceMap.Count == 0)
+            if (project.PackageReferenceMap == null || project.PackageReferenceMap.Count == 0)
             {
                 return;
             }
 
-            var sortedPackageReferenceMap = new SortedDictionary<string, string>(packageReferenceMap);
+            var itemGroup = new XmlNode { Name = "ItemGroup", NewLineBeforeNode = true };
+            root.AddChild(itemGroup);
+
+            var sortedPackageReferenceMap = new SortedDictionary<string, string>(project.PackageReferenceMap);
 
             foreach (var packageReference in sortedPackageReferenceMap)
             {
-                var packageReferenceItem = new XmlNode { Name = nodeName };
+                var packageReferenceItem = new XmlNode { Name = "PackageReference" };
                 packageReferenceItem.AddAttribute("Include", packageReference.Key);
                 if (!string.IsNullOrEmpty(packageReference.Value))
                 {
